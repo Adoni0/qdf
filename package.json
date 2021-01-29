@@ -10,6 +10,7 @@
     "client": "cd client && npm start",
     "backend": "nodemon server.js",
     "dev": "concurrently \"npm run backend\" \"npm run client\"",
+    "build": "cd client && npm run build",
     "heroku-postbuild": "npm run build"
   },
   "repository": {
@@ -21,7 +22,6 @@
   "bugs": {
     "url": "https://github.com/Adoni0/qdf/issues"
   },
-  "homepage": "https://github.com/Adoni0/qdf#readme",
   "dependencies": {
     "axios": "^0.21.1",
     "cors": "^2.8.5",
