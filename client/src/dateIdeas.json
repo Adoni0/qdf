@@ -38,5 +38,10 @@
         "id": 8,
         "date": "Steal the Declaration of Independence, uncovering the hidden map on the back that will lead us to the lost treasure of Thomas Gates and the founding fathers",
         "img": "https://www.slashfilm.com/wp/wp-content/images/national-treasure-3.jpg"
+    },
+    {
+        "id": 9,
+        "date": "Kayaking",
+        "img": "https://images.unsplash.com/photo-1480480565647-1c4385c7c0bf?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MXx8a2F5YWt8ZW58MHx8MHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60"
     }     
 ]
