@@ -1,9 +1,12 @@
+require('dotenv').config();
 var express = require('express');
 const PORT = process.env.PORT || 3001;
 const path = require("path");
 var cors = require('cors');
 
 var twilio = require('twilio');
+var accountSid = process.env.TWILIO_ACCOUNT_ID;
+var authToken = process.env.TWILIO_AUTH_TOKEN;
 
 const app = express();
 
@@ -12,17 +15,16 @@ app.use(cors());
 app.use(express.json());
 
 if (process.env.NODE_ENV === "production") {
-    app.use(express.static("client/build"));
+    app.use(express.static(path.join(__dirname, "client/build")));
+
+    app.get("*", (req, res) => {
+        res.sendFile(path.join(__dirname, "client", "build", "index.html"));
+    });
 }
 
 // app.use(express.static(__dirname + '/'));
 
-
-app.get("*", (req, res) => {
-    res.sendFile(path.join(__dirname, "./client/build/index.html"));
-});
-
-var client = new twilio(process.env.TWILIO_ACCOUNT_ID, process.env.TWILIO_AUTH_TOKEN);
+var client = new twilio(accountSid, authToken);
 
 app.post('/date', (req, res) => {
     const { date } = req.body;
@@ -31,7 +33,8 @@ app.post('/date', (req, res) => {
         to: '+18053772125',
         from: '+13862208419',
         body: `Rashelle chose: ${date}`
-    });
+    })
+    .then(message => console.log('Message Sent!'))
     console.log(date)
     res.status(200).send(date);
 })
